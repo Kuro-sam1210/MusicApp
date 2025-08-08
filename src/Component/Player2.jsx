@@ -1,4 +1,5 @@
 import './player2.css';
+import { useState } from 'react';
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { CiPause1 } from "react-icons/ci";
@@ -6,8 +7,15 @@ import { CiHome } from "react-icons/ci"
 import { IoMusicalNotesOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
+import { CiPlay1 } from "react-icons/ci";
 
 export default function MusicPlayer() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="music-player">
       <div className="status-bar">
@@ -17,13 +25,9 @@ export default function MusicPlayer() {
       </div>
 
       <div className="header">
-        <svg className="icon-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
+        <GrFormPrevious className="icon-6" />
         <div className="header-title">Ophelia by Steven</div>
-        <svg className="icon-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
+        <CiHeart className="icon-6" />
       </div>
 
       <div className="album-section">
@@ -60,8 +64,8 @@ export default function MusicPlayer() {
         
         <GrFormPrevious className="icon-8" />
         
-        <div className="play-button">
-          <CiPause1 />
+        <div className="play-button" onClick={togglePlayPause}>
+          {isPlaying ? <CiPause1 /> : <CiPlay1 />}
         </div>
         
         <MdNavigateNext className="icon-8" />
