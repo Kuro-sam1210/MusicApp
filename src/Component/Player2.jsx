@@ -1,5 +1,5 @@
 import './player2.css';
-import { useState } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { CiPause1 } from "react-icons/ci";
@@ -10,11 +10,82 @@ import { CiLocationOn } from "react-icons/ci";
 import { CiPlay1 } from "react-icons/ci";
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const audioList = [
+    { header: "Shine by Lay Nee", title: "Shine", artist: "Lay Nee", src: "/Audio.mp3",  image: "/Pics2.jpg" },
+    { header: "Grace & Mercy by StaR'ex", title: "Grace & Mercy", artist: "StaR'ex", src: "/track2.ogg",  image: "/coverPics.jpg", },
+    { header: "Veronica by StaR'ex", title: "Veronica", artist: "StaR'ex", src: "/track3.mp3", image: "/download.jpeg" },
+  ];
+  const [currentTrack, setCurrentTrack] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const audioRef = useRef(null);
 
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    const audio = audioRef.current;
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
   };
+
+  const handleNext = () => {
+   let nextTrack = currentTrack + 1;
+   if (nextTrack >= audioList.length) {
+     nextTrack = 0;
+   }
+   setCurrentTrack(nextTrack);
+   setCurrentTrack(nextTrack);
+   setIsPlaying(true);
+
+ };
+
+   const handleTimeUpdate = () => {
+   const audio = audioRef.current;
+   setCurrentTime(audio.currentTime);
+   setDuration(audio.duration || 0);
+ };
+
+ const handleEnded = () => {
+   handleNext();
+ };
+
+useEffect(() => {
+  const audio = audioRef.current;
+  if (!audio) return;
+  audio.load();
+  setCurrentTime(0);
+  if (isPlaying) {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.error("Playback error:", error);
+      });
+    }
+  }
+}, [currentTrack]);
+
+  
+  const handlePrev = () => {
+    let prevTrack = currentTrack - 1;
+    if (prevTrack < 0) {
+      prevTrack = audioList.length - 1;
+    }
+    setCurrentTrack(prevTrack);
+    setCurrentTrack(nextTrack);
+    setIsPlaying(true);
+
+ };
+
+  const formatTime = (time) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+   };
 
   return (
     <div className="music-player">
@@ -26,34 +97,55 @@ export default function MusicPlayer() {
 
       <div className="header">
         <GrFormPrevious className="icon-6" />
-        <div className="header-title">Ophelia by Steven</div>
+        <div className="header-title">{audioList[currentTrack].header}</div>
         <CiHeart className="icon-6" />
       </div>
 
       <div className="album-section">
         <div className="album-cover">
           <div className="album-content">
-            <div className="album-title">OPHELIA</div>
-            <div className="artist-avatar"></div>
+            <div className="album-title">{audioList[currentTrack].title}</div>
+            <div ><img
+          src={audioList[currentTrack].image}
+          alt="Track Art"
+          className="w-40 h-40 mx-auto rounded-xl mb-4 object-cover"
+        /></div>
             <div className="composer-text">MUSIC COMPOSED BY</div>
-            <div className="composer-name">STEVEN PRICE</div>
+            <div className="composer-name">{audioList[currentTrack].artist}</div>
           </div>
         </div>
       </div>
 
       <div className="song-info">
-        <div className="song-title">Ophelia</div>
-        <div className="artist-name">Steven Price</div>
+        <div className="song-title">{audioList[currentTrack].title}</div>
+        <div className="artist-name">{audioList[currentTrack].artist}</div>
       </div>
 
       <div className="progress-section">
         <div className="progress-times">
-          <span>1:25</span>
-          <span>3:15</span>
+          <audio
+            ref={audioRef}
+            src={audioList[currentTrack].src}
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={handleEnded}
+          />
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
         </div>
         <div className="progress-bar">
-          <div className="progress-fill"></div>
-        </div>
+            <input
+              type="range"
+              min="0"
+              max={duration}
+              value={currentTime}
+              onChange={(e) => {
+                const newTime = Number(e.target.value);
+                audioRef.current.currentTime = newTime;
+                setCurrentTime(newTime);
+              }}
+              className="w-full accent-purple-500"
+            />
+          </div>
       </div>
 
       <div className="controls">
@@ -61,14 +153,16 @@ export default function MusicPlayer() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5l5.196 5.196a1 1 0 010 1.414L8 17" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 5l5.196 5.196a1 1 0 010 1.414L16 17" />
         </svg>
+        <button onClick={handlePrev}><GrFormPrevious className="icon-8" /> </button>
         
-        <GrFormPrevious className="icon-8" />
+        <button
+            onClick={togglePlayPause}
+            className="play-button"
+          >
+            {isPlaying ? <CiPause1 /> : <CiPlay1 />}
+        </button>
         
-        <div className="play-button" onClick={togglePlayPause}>
-          {isPlaying ? <CiPause1 /> : <CiPlay1 />}
-        </div>
-        
-        <MdNavigateNext className="icon-8" />
+        <button onClick={handleNext}><MdNavigateNext className="icon-8" /></button>
         
         <svg className="icon-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
