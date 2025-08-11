@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+/* Mobile screen size constraint */
+body {
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+}
+
+/* Keep app at mobile screen size even on desktop */
+#root {
+  max-width: 375px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}

@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import './App.css'
-import MusicPlayer from './component/Player2.jsx'
-function App() {
-  
+import { Routes, Route } from 'react-router-dom'
 
+import MusicPlayer from './Component/Player2.jsx'
+import Home from './Component/Home.jsx'
+import Favorites from './Component/Favorites.jsx'
+
+function App() {
   return (
-    <>
-      
-      <MusicPlayer />
-    </>
+    <div >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/player" element={<MusicPlayer />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+    </div>
   )
 }
 

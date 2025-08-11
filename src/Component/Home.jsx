@@ -1,56 +1,59 @@
-import { Bell, Search, Home, Music, Heart, MapPin } from 'lucide-react';
-import { CiHome } from "react-icons/ci"
-import { IoMusicalNotesOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import { CiLocationOn } from "react-icons/ci";
-import { CiPlay1 } from "react-icons/ci";
+import { Bell } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import Tabs from './Tabs';
 
 
 export default function MusicAppHome() {
+  const navigate = useNavigate();
+
+  const handleGoToPlayer = () => {
+    navigate('/player');
+  };
+
   const recentlyPlayed = [
     {
       id: 1,
-      title: "The Triangle",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=120&h=120&fit=crop&crop=center"
+      title: "Shine",
+      image: "/Pics2.jpg"
     },
     {
       id: 2,
-      title: "Dune Of Visa",
-      image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=120&h=120&fit=crop&crop=center"
+      title: "Grace & Mercy",
+      image: "/coverPics.jpg"
     },
     {
       id: 3,
-      title: "Cocktail",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=120&h=120&fit=crop&crop=center"
+      title: "Veronica",
+      image: "/download.jpeg"
     }
   ];
 
   const recommendations = [
     {
       id: 1,
-      title: "Take care of you",
-      artist: "Asiana Theme",
-      duration: "1:1 lb / dreams",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=60&h=60&fit=crop&crop=center"
+      title: "Shine",
+      artist: "Lay Nee",
+      duration: "3:45 / dreams",
+      image: "/Pics2.jpg"
     },
     {
       id: 2,
-      title: "The stranger inside you",
-      artist: "Hans Letten",
-      duration: "50 lb / dreams",
-      image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=60&h=60&fit=crop&crop=center"
+      title: "Grace & Mercy",
+      artist: "StaR'ex",
+      duration: "4:12 / dreams",
+      image: "/coverPics.jpg"
     },
     {
       id: 3,
-      title: "Edwall of beauty mind",
-      artist: "Jacob Gordon",
-      duration: "44 lb / dreams",
-      image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=60&h=60&fit=crop&crop=center"
+      title: "Veronica",
+      artist: "StaR'ex",
+      duration: "3:28 / dreams",
+      image: "/download.jpeg"
     }
   ];
 
   return (
-    <div className="bg-slate-900 text-white min-h-screen">
+    <div style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #000000 100%)', minHeight: '100vh', color: 'white'}}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 pt-12">
         <div className="flex items-center space-x-3">
@@ -65,25 +68,28 @@ export default function MusicAppHome() {
         <Bell className="w-6 h-6 text-gray-400" />
       </div>
 
-      {/* Title and Search */}
-      <div className="px-4 mt-6">
+      
+      <div className="px-4 mt-12">
         <h2 className="text-2xl font-bold text-white mb-4">Listen The Latest Musics</h2>
         <div className="relative">
-          <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
           <input 
             type="text" 
             placeholder="Search Music" 
-            className="w-full bg-slate-800 text-white placeholder-gray-400 pl-12 pr-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:border-blue-500"
+            className="w-full bg-slate-800 text-white placeholder-gray-400 px-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:border-blue-500"
           />
         </div>
       </div>
 
-      {/* Recently Played */}
-      <div className="px-4 mt-8">
+    
+      <div className="px-4 mt-12">
         <h3 className="text-lg font-semibold text-white mb-4">Recently Played</h3>
-        <div className="flex space-x-4">
+        <div className="flex space-x-6">
           {recentlyPlayed.map((item) => (
-            <div key={item.id} className="flex-shrink-0">
+            <div 
+              key={item.id} 
+              className="flex-shrink-0 cursor-pointer"
+              onClick={handleGoToPlayer}
+            >
               <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2">
                 <img 
                   src={item.image} 
@@ -97,12 +103,16 @@ export default function MusicAppHome() {
         </div>
       </div>
 
-      {/* Recommend for you */}
-      <div className="px-4 mt-8 pb-24">
+      
+      <div className="px-4 mt-16 pb-32">
         <h3 className="text-lg font-semibold text-white mb-4">Recommend for you</h3>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {recommendations.map((item) => (
-            <div key={item.id} className="flex items-center space-x-3">
+            <div 
+              key={item.id} 
+              className="flex items-center space-x-3 cursor-pointer hover:bg-slate-800 p-2 rounded-lg transition-colors duration-200"
+              onClick={handleGoToPlayer}
+            >
               <div className="w-12 h-12 bg-slate-800 rounded-lg overflow-hidden flex-shrink-0">
                 <img 
                   src={item.image} 
@@ -120,15 +130,8 @@ export default function MusicAppHome() {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-700">
-        <div className="flex items-center justify-around py-4">
-          <Home className="w-6 h-6 text-gray-400" />
-          <Music className="w-6 h-6 text-blue-400" />
-          <Heart className="w-6 h-6 text-gray-400" />
-          <MapPin className="w-6 h-6 text-gray-400" />
-        </div>
-      </div>
+      
+      <Tabs />
     </div>
   );
 }
