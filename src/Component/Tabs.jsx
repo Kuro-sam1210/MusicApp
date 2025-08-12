@@ -3,6 +3,7 @@ import { CiHome } from "react-icons/ci"
 import { IoMusicalNotesOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
 
 export default function Tabs() {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ export default function Tabs() {
           }}
           onClick={handleGoToFavorites}
         />
-        <CiLocationOn 
+        <CgProfile 
           style={{
             width: '24px',
             height: '24px',

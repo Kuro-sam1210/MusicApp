@@ -6,9 +6,10 @@ import Tabs from './Tabs';
 export default function MusicAppHome() {
   const navigate = useNavigate();
 
-  const handleGoToPlayer = () => {
-    navigate('/player');
-  };
+const handleGoToPlayer = (trackIndex) => {
+  navigate('/player', { state: { trackIndex } });
+};
+
 
   const recentlyPlayed = [
     {
@@ -84,22 +85,23 @@ export default function MusicAppHome() {
       <div className="px-4 mt-12">
         <h3 className="text-lg font-semibold text-white mb-4">Recently Played</h3>
         <div className="flex space-x-6">
-          {recentlyPlayed.map((item) => (
-            <div 
-              key={item.id} 
-              className="flex-shrink-0 cursor-pointer"
-              onClick={handleGoToPlayer}
-            >
-              <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-white text-sm font-medium text-center">{item.title}</p>
-            </div>
-          ))}
+          {recentlyPlayed.map((item, index) => (
+  <div 
+    key={item.id} 
+    className="flex-shrink-0 cursor-pointer"
+    onClick={() => handleGoToPlayer(index)}
+  >
+    <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2">
+      <img 
+        src={item.image} 
+        alt={item.title}
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <p className="text-white text-sm font-medium text-center">{item.title}</p>
+  </div>
+))}
+
         </div>
       </div>
 
@@ -107,26 +109,27 @@ export default function MusicAppHome() {
       <div className="px-4 mt-16 pb-32">
         <h3 className="text-lg font-semibold text-white mb-4">Recommend for you</h3>
         <div className="space-y-6">
-          {recommendations.map((item) => (
-            <div 
-              key={item.id} 
-              className="flex items-center space-x-3 cursor-pointer hover:bg-slate-800 p-2 rounded-lg transition-colors duration-200"
-              onClick={handleGoToPlayer}
-            >
-              <div className="w-12 h-12 bg-slate-800 rounded-lg overflow-hidden flex-shrink-0">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="text-white font-medium text-sm truncate">{item.title}</h4>
-                <p className="text-gray-400 text-sm">{item.artist}</p>
-                <p className="text-gray-500 text-xs">{item.duration}</p>
-              </div>
-            </div>
-          ))}
+          {recommendations.map((item, index) => (
+  <div 
+    key={item.id} 
+    className="flex items-center space-x-3 cursor-pointer hover:bg-slate-800 p-2 rounded-lg transition-colors duration-200"
+    onClick={() => handleGoToPlayer(index)}
+  >
+    <div className="w-12 h-12 bg-slate-800 rounded-lg overflow-hidden flex-shrink-0">
+      <img 
+        src={item.image} 
+        alt={item.title}
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div className="flex-1 min-w-0">
+      <h4 className="text-white font-medium text-sm truncate">{item.title}</h4>
+      <p className="text-gray-400 text-sm">{item.artist}</p>
+      <p className="text-gray-500 text-xs">{item.duration}</p>
+    </div>
+  </div>
+))}
+
         </div>
       </div>
 
