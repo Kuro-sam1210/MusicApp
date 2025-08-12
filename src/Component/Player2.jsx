@@ -19,7 +19,7 @@ export default function MusicPlayer() {
   const audioRef = useRef(null);
 
   const savedTrack = localStorage.getItem("lastTrackIndex");
-  const startIndex = savedTrack !== null ? Number(savedTrack) : (location.state?.trackIndex ?? 0);
+  const startIndex = location.state?.trackIndex !== undefined ? location.state.trackIndex : (savedTrack !== null ? Number(savedTrack) : 0);
   const [currentTrack, setCurrentTrack] = useState(startIndex);
 
   const [isPlaying, setIsPlaying] = useState(false);
