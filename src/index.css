@@ -1,17 +1,90 @@
 @import "tailwindcss";
 
+/* ===== MUSIC APP THEME DOCUMENTATION ===== */
+/* 
+ * This section documents the official color scheme and design tokens
+ * for the music app. Please use these colors consistently throughout 
+ * the app to maintain visual coherence.
+ * 
+ * DO NOT introduce new colors without updating this documentation.
+ */
+
+:root {
+  /* === PRIMARY COLORS === */
+  --primary-bg-start: #1e3a8a;     /* Blue-800 - Main gradient start */
+  --primary-bg-mid: #3730a3;       /* Violet-700 - Main gradient middle */
+  --primary-bg-end: #000000;       /* Black - Main gradient end */
+  --primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #000000 100%);
+  
+  /* === ACCENT COLORS === */
+  --accent-orange: #f97316;         /* Orange-500 - User avatar/profile */
+  --accent-blue: #4f46e5;           /* Indigo-600 - Play button primary */
+  --accent-blue-hover: #5b21b6;     /* Purple-700 - Play button hover */
+  --accent-blue-light: #818cf8;     /* Indigo-400 - Active nav icons */
+  --accent-blue-lighter: #a78bfa;   /* Purple-400 - Active nav hover */
+  --accent-red-heart: #ff6b6b;      /* Red-400 - Heart/favorite active */
+  --accent-red-heart-hover: #ff5252; /* Red-500 - Heart hover */
+  
+  /* === TEXT COLORS === */
+  --text-primary: #ffffff;          /* White - Primary text */
+  --text-secondary: #d1d5db;        /* Gray-300 - Secondary text/artist names */
+  --text-muted: #9ca3af;           /* Gray-400 - Muted text/inactive states */
+  --text-subtle: #6b7280;          /* Gray-500 - Very subtle text */
+  
+  /* === BACKGROUND COLORS === */
+  --bg-primary: #1a1a1a;           /* Dark gray - Root background */
+  --bg-card: #334155;              /* Slate-700 - Card backgrounds */
+  --bg-card-dark: #1e293b;         /* Slate-800 - Darker cards/search */
+  --bg-tab-bar: #0f172a;           /* Slate-900 - Bottom navigation */
+  --bg-album-cover: linear-gradient(135deg, #134e4a 0%, #065f46 100%); /* Teal gradient */
+  
+  /* === INTERACTIVE STATES === */
+  --hover-overlay: rgba(51, 65, 85, 0.8);  /* Slate-700 with opacity */
+  --focus-border: #3b82f6;         /* Blue-500 - Focus states */
+  --progress-bg: rgba(255, 255, 255, 0.3); /* Progress bar background */
+  
+  /* === BORDERS & DIVIDERS === */
+  --border-primary: rgba(255, 255, 255, 0.1); /* Light transparent borders */
+  --border-secondary: #334155;     /* Slate-700 - Tab bar border */
+  
+  /* === SHADOWS === */
+  --shadow-app: 0 0 20px rgba(0, 0, 0, 0.5);     /* App container shadow */
+  --shadow-album: 0 10px 30px rgba(0, 0, 0, 0.3); /* Album cover shadow */
+  --shadow-play-btn: 0 4px 15px rgba(79, 70, 229, 0.4); /* Play button shadow */
+  --shadow-play-btn-hover: 0 6px 20px rgba(79, 70, 229, 0.6); /* Play button hover shadow */
+  --shadow-heart: 0 0 10px rgba(255, 107, 107, 0.3); /* Heart icon shadow */
+  --shadow-heart-hover: 0 0 15px rgba(255, 107, 107, 0.5); /* Heart icon hover shadow */
+  
+  /* === LAYOUT CONSTRAINTS === */
+  --app-max-width: 375px;          /* Mobile-first max width */
+  --app-min-height: 100vh;         /* Full viewport height */
+  
+  /* === TYPOGRAPHY === */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* 
+ * USAGE EXAMPLES:
+ * background: var(--primary-gradient);
+ * color: var(--text-primary);
+ * background-color: var(--accent-orange);
+ * box-shadow: var(--shadow-app);
+ */
+
+/* ===== BASE STYLES ===== */
 /* Mobile screen size constraint */
 body {
   margin: 0;
   padding: 0;
-  background: #1a1a1a;
+  background: var(--bg-primary);
+  font-family: var(--font-family);
 }
 
 /* Keep app at mobile screen size even on desktop */
 #root {
-  max-width: 375px;
+  max-width: var(--app-max-width);
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  min-height: var(--app-min-height);
+  box-shadow: var(--shadow-app);
 }
