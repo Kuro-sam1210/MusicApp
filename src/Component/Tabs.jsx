@@ -21,9 +21,14 @@ export default function Tabs() {
     navigate('/favorites');
   };
 
+  const handleGoToProfile = () => {
+    navigate('/profile');
+  };
+
   const isHome = location.pathname === '/';
   const isPlayer = location.pathname === '/player';
   const isFavorites = location.pathname === '/favorites';
+  const isProfile = location.pathname === '/profile';
 
   return (
     <div style={{
@@ -78,8 +83,9 @@ export default function Tabs() {
             height: '24px',
             cursor: 'pointer',
             transition: 'all 0.2s',
-            color: 'rgb(156 163 175)'
+            color: isProfile ? 'rgb(96 165 250)' : 'rgb(156 163 175)'
           }}
+          onClick={handleGoToProfile}
         />
       </div>
     </div>
