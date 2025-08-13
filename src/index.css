@@ -94,3 +94,6 @@ body {
   box-shadow: var(--shadow-app);
   
 }
+::-webkit-scrollbar{
+  display: none ;
+}

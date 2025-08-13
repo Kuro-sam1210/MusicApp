@@ -26,6 +26,8 @@ export default function MusicPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -122,7 +124,18 @@ export default function MusicPlayer() {
   }, [currentTime]);
 
   const handleGoToHome = () => {
-    navigate('/');
+    setIsExiting(true);
+    setTimeout(() => {
+      navigate('/');
+    }, 400); // Slightly shorter than animation duration for smooth transition
+  };
+
+  // Generic exit handler for any route
+  const handleExitToRoute = (route) => {
+    setIsExiting(true);
+    setTimeout(() => {
+      navigate(route);
+    }, 400); // Slightly shorter than animation duration for smooth transition
   };
 
   useEffect(() => {
@@ -132,8 +145,24 @@ export default function MusicPlayer() {
     }
   }, []);
 
+  useEffect(() => {
+    setIsAnimating(true);
+    const timer = setTimeout(() => {
+      setIsAnimating(false);
+    }, 600); 
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  
+  const getAnimationClass = () => {
+    if (isExiting) return 'slide-down-exit';
+    if (isAnimating) return 'slide-up-enter';
+    return 'slide-up-enter-done';
+  };
+
   return (
-    <div className="music-player">
+    <div className={`music-player ${getAnimationClass()}`}>
       <div className="status-bar">
         <div className="battery-container"></div>
       </div>
@@ -199,7 +228,7 @@ export default function MusicPlayer() {
         </svg>
       </div>
 
-      <Tabs />
+      <Tabs onNavigateFromPlayer={handleExitToRoute} currentRoute="/player" />
     </div>
   );
 }
