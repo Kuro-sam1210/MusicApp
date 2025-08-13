@@ -87,4 +87,5 @@ body {
   width: 100%;
   min-height: var(--app-min-height);
   box-shadow: var(--shadow-app);
+  
 }
