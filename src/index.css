@@ -56,11 +56,11 @@
   --shadow-heart-hover: 0 0 15px rgba(255, 107, 107, 0.5); /* Heart icon hover shadow */
   
   /* === LAYOUT CONSTRAINTS === */
-  --app-max-width: 375px;          /* Mobile-first max width */
+  --app-max-width: 530px;          /* Mobile-first max width */
   --app-min-height: 100vh;         /* Full viewport height */
   
   /* === TYPOGRAPHY === */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-family: "Nunito", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 /* 
@@ -72,12 +72,17 @@
  */
 
 /* ===== BASE STYLES ===== */
+/* Universal font application */
+* {
+  font-family: "Nunito", sans-serif;
+}
+
 /* Mobile screen size constraint */
 body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #1c0b30, hwb(223 4% 86%));
-  font-family: var(--font-family);
+  font-family: "Nunito", sans-serif;
 }
 
 /* Keep app at mobile screen size even on desktop */
@@ -87,4 +92,8 @@ body {
   width: 100%;
   min-height: var(--app-min-height);
   box-shadow: var(--shadow-app);
+  
+}
+::-webkit-scrollbar{
+  display: none ;
 }

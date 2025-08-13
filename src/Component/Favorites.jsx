@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
 import Tabs from './Tabs';
 import { useEffect, useState } from 'react';
 
@@ -8,17 +7,14 @@ export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
 
   const loadFavorites = () => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(storedFavorites);
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setFavorites(Array.isArray(storedFavorites) ? storedFavorites : []);
   };
 
   useEffect(() => {
     loadFavorites();
   }, []);
 
-  const handleGoBack = () => {
-    navigate('/');
-  };
 
   const handleGoToPlayer = (trackIndex) => {
     navigate('/player', { state: { trackIndex } });
@@ -26,9 +22,6 @@ export default function Favorites() {
 
   return (
     <div style={{ background: 'linear-gradient(to bottom, #1c0b30, hwb(223 4% 86%))', minHeight: '100vh', color: 'white' }}>
-      <div className="flex items-center justify-between p-4 pt-12">
-        <ArrowLeft className="w-6 h-6 text-white cursor-pointer" onClick={handleGoBack} />
-      </div>
 
       <div className="px-4 pb-8">
         <div className="flex items-center space-x-4">
@@ -52,15 +45,15 @@ export default function Favorites() {
           <div className="flex space-x-4 overflow-x-auto">
             {favorites.map((item, idx) => (
               <div
-                key={item.id}
-                className="flex-shrink-0 cursor-pointer"
+                key={item.id || idx}
+                className="flex-shrink-0 cursor-pointer transform transition-all duration-300 hover:scale-110 hover:-translate-y-2 group"
                 onClick={() => handleGoToPlayer(idx)}
               >
-                <div className="w-24 h-24 rounded-lg overflow-hidden mb-2">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2 shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/20 transition-all duration-300">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                <p className="text-white text-xs font-medium text-center">{item.title}</p>
-                <p className="text-gray-400 text-xs text-center">{item.artist}</p>
+                <p className="text-white text-xs font-medium text-center transition-all duration-300 group-hover:text-blue-300">{item.title}</p>
+                <p className="text-gray-400 text-xs text-center transition-all duration-300 group-hover:text-gray-300">{item.artist}</p>
               </div>
             ))}
           </div>
