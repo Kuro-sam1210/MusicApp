@@ -25,7 +25,7 @@ export default function Favorites() {
   };
 
   return (
-    <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #000000 100%)', minHeight: '100vh', color: 'white' }}>
+    <div style={{ background: 'linear-gradient(to bottom, #1c0b30, hwb(223 4% 86%))', minHeight: '100vh', color: 'white' }}>
       <div className="flex items-center justify-between p-4 pt-12">
         <ArrowLeft className="w-6 h-6 text-white cursor-pointer" onClick={handleGoBack} />
       </div>

@@ -76,7 +76,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg-primary);
+  background: linear-gradient(to bottom, #1c0b30, hwb(223 4% 86%));
   font-family: var(--font-family);
 }
 
