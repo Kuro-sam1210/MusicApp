@@ -93,17 +93,17 @@ export default function MusicAppHome() {
           {recentlyPlayed.map((item, index) => (
             <div
               key={item.id}
-              className="flex-shrink-0 cursor-pointer"
+              className="flex-shrink-0 cursor-pointer transform transition-all duration-300 hover:scale-110 hover:-translate-y-2 group"
               onClick={() => handleGoToPlayer(index)}
             >
-              <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2">
+              <div className="w-24 h-24 bg-slate-800 rounded-lg overflow-hidden mb-2 shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/20 transition-all duration-300">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <p className="text-white text-sm font-medium text-center">
+              <p className="text-white text-sm font-medium text-center transition-all duration-300 group-hover:text-blue-300">
                 {item.title}
               </p>
             </div>
@@ -120,22 +120,22 @@ export default function MusicAppHome() {
           {recommendations.map((item, index) => (
             <div
               key={item.id}
-              className="flex items-center space-x-3 cursor-pointer hover:bg-slate-800 p-2 rounded-lg transition-colors duration-200"
+              className="flex items-center space-x-3 cursor-pointer hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-700 p-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 group"
               onClick={() => handleGoToPlayer(index)}
             >
-              <div className="w-12 h-12 bg-slate-800 rounded-lg overflow-hidden flex-shrink-0">
+              <div className="w-12 h-12 bg-slate-800 rounded-xl overflow-hidden flex-shrink-0 shadow-md group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all duration-300">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="text-white font-medium text-sm truncate">
+              <div className="flex-1 min-w-0 transition-all duration-300 group-hover:translate-x-1">
+                <h4 className="text-white font-medium text-sm truncate group-hover:text-blue-300 transition-colors duration-300">
                   {item.title}
                 </h4>
-                <p className="text-gray-400 text-sm">{item.artist}</p>
-                <p className="text-gray-500 text-xs">{item.duration}</p>
+                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">{item.artist}</p>
+                <p className="text-gray-500 text-xs group-hover:text-gray-400 transition-colors duration-300">{item.duration}</p>
               </div>
             </div>
           ))}

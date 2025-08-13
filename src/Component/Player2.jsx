@@ -168,7 +168,6 @@ export default function MusicPlayer() {
       </div>
 
       <div className="header">
-        <GrFormPrevious className="icon-6" onClick={handleGoToHome} style={{ cursor: 'pointer' }} />
         <div className="header-title">{audioList[currentTrack].header}</div>
         <CiHeart className={`icon-6 heart-icon ${isLiked ? 'heart-active' : ''}`} onClick={toggleHeart} />
       </div>
