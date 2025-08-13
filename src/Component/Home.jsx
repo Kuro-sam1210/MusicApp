@@ -54,7 +54,14 @@ const handleGoToPlayer = (trackIndex) => {
   ];
 
   return (
-    <div style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #000000 100%)', minHeight: '100vh', color: 'white'}}>
+    <div style={{ minHeight: "100vh" ,
+    background: "linear-gradient(to bottom, #1c0b30, hwb(223 4% 86%))",
+    color: "white",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "16px",
+    fontFamily: "sans-serif"}}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 pt-12">
         <div className="flex items-center space-x-3">
@@ -71,12 +78,13 @@ const handleGoToPlayer = (trackIndex) => {
 
       
       <div className="px-4 mt-12">
-        <h2 className="text-2xl font-bold text-white mb-4">Listen The Latest Musics</h2>
+       
         <div className="relative">
+          <h2 className="text-2xl font-bold  text-white mb-4">Listen The Latest Musics</h2>
           <input 
             type="text" 
             placeholder="Search Music" 
-            className="w-full bg-slate-800 text-white placeholder-gray-400 px-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:border-blue-500"
+            className="w-full bg-slate-950 text-white placeholder-gray-400 px-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:border-blue-500"
           />
         </div>
       </div>

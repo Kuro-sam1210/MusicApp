@@ -36,10 +36,15 @@ export default function Tabs() {
       bottom: 0,
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '100%',
-      maxWidth: '375px',
-      background: 'rgb(15 23 42)',
-      borderTop: '1px solid rgb(51 65 85)'
+      width: '530px',
+      height: '60px',
+      maxWidth: '100%',
+      background: 'linear-gradient(to bottom, #0b1630, #0a1123)',
+      backdropFilter: "blur(8px)",
+      borderRadius: '20px 20px 0 0',
+      boxShadow: "0 6px 17px rgba(0,0,0,0.3)",
+      alignItems: 'center',
+      // padding: '12px 0',
     }}>
       <div style={{
         display: 'flex',
