@@ -5,12 +5,20 @@ import { CiHeart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 
-export default function Tabs() {
+export default function Tabs({ onNavigateFromPlayer, currentRoute }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Check if we're on the player route and have a custom navigation handler
+  const isOnPlayerRoute = currentRoute === '/player';
+  const shouldUseCustomNavigation = isOnPlayerRoute && onNavigateFromPlayer;
+
   const handleGoToHome = () => {
-    navigate('/');
+    if (shouldUseCustomNavigation) {
+      onNavigateFromPlayer('/');
+    } else {
+      navigate('/');
+    }
   };
 
   const handleGoToPlayer = () => {
@@ -18,11 +26,19 @@ export default function Tabs() {
   };
 
   const handleGoToFavorites = () => {
-    navigate('/favorites');
+    if (shouldUseCustomNavigation) {
+      onNavigateFromPlayer('/favorites');
+    } else {
+      navigate('/favorites');
+    }
   };
 
   const handleGoToProfile = () => {
-    navigate('/profile');
+    if (shouldUseCustomNavigation) {
+      onNavigateFromPlayer('/profile');
+    } else {
+      navigate('/profile');
+    }
   };
 
   const isHome = location.pathname === '/';

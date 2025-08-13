@@ -60,7 +60,7 @@
   --app-min-height: 100vh;         /* Full viewport height */
   
   /* === TYPOGRAPHY === */
-
+  --font-family: "Nunito", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 /* 
@@ -72,6 +72,11 @@
  */
 
 /* ===== BASE STYLES ===== */
+/* Universal font application */
+* {
+  font-family: "Nunito", sans-serif;
+}
+
 /* Mobile screen size constraint */
 body {
   margin: 0;

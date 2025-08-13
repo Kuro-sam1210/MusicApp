@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  padding-bottom: 100px; /* Reserve space for tabs */
 }
 
 
@@ -111,7 +112,7 @@
 
 
 .album-section {
-  padding: clamp(20px, 5vw, 40px) clamp(16px, 4vw, 32px);
+  padding: clamp(18px, 4.5vw, 32px) clamp(16px, 4vw, 32px);
   flex: 1;
   display: flex;
   align-items: center;
@@ -119,8 +120,8 @@
 }
 
 .album-cover {
-  width: clamp(250px, 70vw, 320px);
-  height: clamp(250px, 70vw, 320px);
+  width: clamp(240px, 65vw, 300px);
+  height: clamp(240px, 65vw, 300px);
   border-radius: clamp(12px, 3vw, 16px);
   margin: 0 auto;
   display: flex;
@@ -180,7 +181,7 @@
 
 
 .song-info {
-  padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+  padding: clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 32px);
   text-align: center;
 }
 
@@ -199,7 +200,7 @@
 
 
 .progress-section {
-  padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+  padding: clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 32px);
 }
 
 .progress-times {
@@ -255,7 +256,7 @@
   align-items: center;
   justify-content: center;
   gap: clamp(20px, 6vw, 32px);
-  padding: clamp(20px, 5vw, 32px) 0;
+  padding: clamp(18px, 4.5vw, 28px) 0;
 }
 
 .controls button {
@@ -382,5 +383,43 @@
     width: 48px !important;
     height: 48px !important;
   }
+}
+
+/* === SLIDE ANIMATIONS === */
+/* Animation for music player entrance */
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for music player exit */
+@keyframes slideDownToBottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.slide-up-enter {
+  animation: slideUpFromBottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slide-up-enter-done {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-down-exit {
+  animation: slideDownToBottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
 }
 
