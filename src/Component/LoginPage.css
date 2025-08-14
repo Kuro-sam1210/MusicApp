@@ -1,5 +1,80 @@
 .page {
-  background-color: #190d2e; 
+  background: linear-gradient(180deg, #1a0234 0%, #0d0420 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  background-color: #180d2e; /* transparent form */
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  color: white; 
+}
+
+.form-box h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px; 
+  margin-bottom: 15px;
+  border-radius: 5px;
+  color: white; 
+  font-size: 1rem; 
+}
+
+
+.input::placeholder {
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  font-size: 1.125rem; 
+}
+
+
+
+.btn {
+  background-color: rgb(255, 255, 255);
+  color: #39374a;
+  padding: 6px 10px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 0.9rem; 
+  transition: background-color 160ms ease, transform 120ms ease, opacity 160ms ease;
+}
+
+.btn:hover {
+  background-color: #f1f1f1; 
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+.toggle-text {
+  text-align: center;
+  color: white;
+}
+
+.toggle-link {
+  color: #fefefe; 
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+
+/* .page {
+  background: linear-gradient(180deg, #1a0234 0%, #0d0420 100%);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,7 +83,7 @@
 
 
 .form-box {
-  background-color: #180d2e; /* transparent form */
+  background-color: #180d2e; 
   padding: 40px;
   border-radius: 10px;
   display: flex;
@@ -34,7 +109,7 @@
 }
 
 .input::placeholder {
-  color: rgb(151, 151, 151); 
+  color: rgb(172, 172, 172); 
   opacity: 1;
 }
 
@@ -63,4 +138,4 @@
   color: #fefefe; 
   cursor: pointer;
   font-weight: bold;
-}
+} */
