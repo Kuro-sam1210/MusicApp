@@ -9,7 +9,7 @@ export default function Tabs({ onNavigateFromPlayer, currentRoute }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check if we're on the player route and have a custom navigation handler
+  
   const isOnPlayerRoute = currentRoute === '/player';
   const shouldUseCustomNavigation = isOnPlayerRoute && onNavigateFromPlayer;
 
