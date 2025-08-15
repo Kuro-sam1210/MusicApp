@@ -1,66 +1,80 @@
 .page {
-  background-color: #190d2e; 
+  background: linear-gradient(180deg, #121212, #000000);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
-
 
 .form-box {
-  background-color: #180d2e; /* transparent form */
+  background-color: #181818;
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  width: 300px;
-  color: white; 
+  width: 320px;
+  color: white;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.6);
 }
-
 
 .form-box h2 {
   color: white;
   text-align: center;
   margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-
 .input {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  background-color: #2a2a2a;
+  padding: 12px;
   margin-bottom: 15px;
-  border-radius: 5px;
-  color: white; 
+  border-radius: 4px;
+  color: white;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #1db954; /* Spotify green */
+  outline: none;
 }
 
 .input::placeholder {
-  color: rgb(151, 151, 151); 
-  opacity: 1;
+  color: #b3b3b3;
 }
 
-
 .btn {
-  background-color: rgb(255, 255, 255);
-  color: #39374a;
-  padding: 10px;
+  background-color: #1db954; /* Spotify green */
+  color: white;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 15px;
+  text-align: center;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .btn:hover {
-  opacity: 0.8;
+  background-color: #1ed760;
+  transform: scale(1.02);
 }
 
 .toggle-text {
   text-align: center;
-  color: white;
+  color: #b3b3b3;
+  font-size: 0.9rem;
 }
 
 .toggle-link {
-  color: #fefefe; 
+  color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: color 0.2s;
+}
+
+.toggle-link:hover {
+  color: #1db954;
 }
