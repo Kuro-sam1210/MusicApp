@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
-import MusicPlayer from './Component/Player2.jsx'
-import Home from './Component/Home.jsx'
-import Favorites from './Component/Favorites.jsx'
-import Profile from './Component/Profile.jsx'
-import LoginPage from './Component/LoginPage.jsx'
-import Settings from './Component/Settings.jsx'
+import MusicPlayer from "./Component/Player2.jsx";
+import Home from "./Component/Home.jsx";
+import Favorites from "./Component/Favorites.jsx";
+import Profile from "./Component/Profile.jsx";
+import LoginPage from "./Component/LoginPage.jsx";
+import CreateAccount from "./Component/CreateAccount.jsx";
 
 function App() {
   return (
@@ -15,11 +15,11 @@ function App() {
         <Route path="/player" element={<MusicPlayer />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<CreateAccount />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
