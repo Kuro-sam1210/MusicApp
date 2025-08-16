@@ -5,6 +5,9 @@ import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { CiPause1, CiPlay1, CiHeart, CiHome, CiLocationOn } from "react-icons/ci";
 import { IoMusicalNotesOutline } from "react-icons/io5";
+import { TiArrowShuffle } from "react-icons/ti";
+import { MdOutlineRepeat } from "react-icons/md";
+import { MdOutlineRepeatOne } from "react-icons/md";
 import Tabs from '../Component/Tabs';
 
 export default function MusicPlayer() {
@@ -28,6 +31,22 @@ export default function MusicPlayer() {
   const [isLiked, setIsLiked] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
+  const [isRepeatOne, setIsRepeatOne] = useState(false);
+  const [isRepeatActive, setIsRepeatActive] = useState(false);
+  const [repeatMode, setRepeatMode] = useState("off"); 
+
+
+const toggleRepeatMode = () => {
+  if (repeatMode === "off") {
+    setRepeatMode("repeat");
+  } else if (repeatMode === "repeat") {
+    setRepeatMode("repeatOne");
+  } else {
+    setRepeatMode("off");
+  }
+};
+
+
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -61,8 +80,16 @@ export default function MusicPlayer() {
   };
 
   const handleEnded = () => {
+  if (repeatMode === "repeatOne") {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+  } else if (repeatMode === "repeat") {
     handleNext();
-  };
+  } else {
+    setIsPlaying(false);
+  }
+};
+
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -123,12 +150,12 @@ export default function MusicPlayer() {
     localStorage.setItem("lastTrackTime", currentTime);
   }, [currentTime]);
 
-  const handleGoToHome = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      navigate('/');
-    }, 400); // Slightly shorter than animation duration for smooth transition
-  };
+  // const handleGoToHome = () => {
+  //   setIsExiting(true);
+  //   setTimeout(() => {
+  //     navigate('/');
+  //   }, 400); // Slightly shorter than animation duration for smooth transition
+  // };
 
   // Generic exit handler for any route
   const handleExitToRoute = (route) => {
@@ -222,9 +249,17 @@ export default function MusicPlayer() {
           {isPlaying ? <CiPause1 /> : <CiPlay1 />}
         </button>
         <button onClick={handleNext}><MdNavigateNext className="icon-8" /></button>
-        <svg className="icon-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
+        <button onClick={toggleRepeatMode}>
+  {repeatMode === "repeatOne" ? (
+    <MdOutlineRepeatOne className={`icon-8 ${repeatMode !== "off" ? "active-icon" : ""}`} />
+  ) : (
+    <MdOutlineRepeat className={`icon-8 ${repeatMode !== "off" ? "active-icon" : ""}`} />
+  )}
+</button>
+
+
+
+
       </div>
 
       <Tabs onNavigateFromPlayer={handleExitToRoute} currentRoute="/player" />

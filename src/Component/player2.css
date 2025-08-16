@@ -162,12 +162,43 @@
   color: #1db954;
 }
 
+.heart-icon.heart-active {
+   color: #1db954; 
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.active-icon {
+  color: #1db954; 
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.icon-6 {
+  font-size: 1.8rem; 
+}
+
+.icon-8 {
+  font-size: 2.5rem; 
+
+}
+.icon-9 {
+  font-size: 2.5rem; 
+}
+
+
+
+.play-button svg {
+  font-size: 3rem; 
+}
+
+
 .nav-icon:hover {
   color: #fff;
 }
 
 /* Animations */
-@keyframes slideUpFromBottom {
+/* @keyframes slideUpFromBottom {
   0% {
     transform: translateY(100%);
     opacity: 0;
@@ -183,4 +214,4 @@
 }
 .slide-up-exit {
   animation: slideUpFromBottom 0.4s ease reverse forwards;
-}
+} */

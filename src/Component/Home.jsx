@@ -74,7 +74,7 @@ export default function MusicAppHome() {
         </div>
       </div>
 
-      {/* Search Section */}
+      
       <div className="relative justify-between items-center rounded-2xl px-6 py-5 text-white font-sans">
         <div className="flex items-center justify-between gap-8">
           <h2 className="text-2xl font-bold text-white">
