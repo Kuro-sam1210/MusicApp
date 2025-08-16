@@ -8,6 +8,7 @@ import CreateAccount from "./Component/CreateAccount.jsx";
 import About from "./Component/About.jsx"; 
 import HelpSupport from "./Component/HelpSupport.jsx"; 
 import PrivacyPolicy from "./Component/PrivacyPolicy.jsx";
+import Settings from "./Component/Settings.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/about" element={<About />} /> 
         <Route path="/help" element={<HelpSupport />} /> 
+        <Route path="/settings" element={<Settings />} />
          <Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
       </Routes>
     </div>
