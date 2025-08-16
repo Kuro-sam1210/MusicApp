@@ -18,10 +18,6 @@ function HelpSupport() {
         <a href="mailto:support@soundmack.com" className="contact-link">
           Email Support
         </a>
-        <br />
-        <button className="contact-link" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
       </div>
     </div>
   );
