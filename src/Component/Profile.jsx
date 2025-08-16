@@ -80,7 +80,10 @@ export default function Profile() {
 
       {/* App Options */}
       <div className="px-4 space-y-3 mt-4">
-        <button className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition">
+        <button 
+          onClick={() => navigate('/settings')}
+          className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition"
+        >
           <FiSettings className="text-gray-300" />
           <span className="text-gray-300 text-sm">Settings</span>
         </button>
