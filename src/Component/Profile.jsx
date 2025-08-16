@@ -85,12 +85,16 @@ export default function Profile() {
           <span className="text-gray-300 text-sm">Settings</span>
         </button>
 
-        <button className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition">
+        <button 
+        onClick={() => navigate("/about")} 
+          className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition">
           <FiInfo className="text-gray-300" />
           <span className="text-gray-300 text-sm">About Us</span>
         </button>
 
-        <button className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition">
+        <button 
+         onClick={() => navigate("/help")} 
+        className="w-full flex items-center gap-3 bg-[#181818] hover:bg-[#282828] px-4 py-3 rounded-2xl transition">
           <FiHelpCircle className="text-gray-300" />
           <span className="text-gray-300 text-sm">Help & Support</span>
         </button>
