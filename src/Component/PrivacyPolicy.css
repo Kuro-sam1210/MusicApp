@@ -1,0 +1,57 @@
+.privacy-box {
+  background: linear-gradient(180deg, #121212, #000000);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.privacy-content {
+  background-color: #181818;
+  padding: 40px;
+  border-radius: 8px;
+  width: 350px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.6);
+}
+
+.privacy-content h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #dad9d8;
+}
+
+.privacy-content h2 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #dad9d8;
+}
+
+.privacy-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.privacy-content ul {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0d542a;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: #118843;
+}
